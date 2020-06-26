@@ -41,7 +41,7 @@ class AppServiceProvider extends ServiceProvider
         Component::observe(ComponentObserver::class);
         Consumable::observe(ConsumableObserver::class);
         License::observe(LicenseObserver::class);
-        \URL::forceScheme('https');
+        
 
     }
 
