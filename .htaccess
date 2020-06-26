@@ -2,6 +2,10 @@
     <IfModule mod_negotiation.c>
         Options -MultiViews
     </IfModule>
+	Rewritecond %{REQUEST_FILENAME} !-f
+	RewriteRule (.*) /amn.inline.gr/public/$1 [L,NC]  
+	RewriteCond %{REQUEST_URI}  ^/$
+	RewriteRule !^amn.inline.gr/public/(.*) /amn.inline.gr/public/$1 [L,NC]
 
     # Make sure .env files not not browseable if in a sub-directory.
     <FilesMatch "\.env$">
