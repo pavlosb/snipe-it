@@ -87,7 +87,7 @@ class SecurityHeaders
         }
 
 
-        // This defaults to false to maintain backwards compatibility
+        // This defaults to false to maintain backwards compatibility for
         // people who are not running Snipe-IT over TLS (shame, shame, shame!)
         // Seriously though, please run Snipe-IT over TLS. Let's Encrypt is free.
         // https://letsencrypt.org
@@ -102,11 +102,11 @@ class SecurityHeaders
         if ((config('app.debug')!='true')  || (config('app.enable_csp')=='true')) {
             $csp_policy[] = "default-src 'self'";
             $csp_policy[] = "style-src 'self' 'unsafe-inline'";
-            $csp_policy[] = "script-src 'self' 'unsafe-inline'";
+            $csp_policy[] = "script-src 'self' 'unsafe-inline' 'unsafe-eval'";
             $csp_policy[] = "connect-src 'self'";
             $csp_policy[] = "object-src 'none'";
             $csp_policy[] = "font-src 'self' data:";
-            $csp_policy[] = "img-src 'self' data: gravatar.com";
+            $csp_policy[] = "img-src 'self' data: gravatar.com maps.google.com maps.gstatic.com *.googleapis.com";
             $csp_policy = join(';', $csp_policy);
             $response->headers->set('Content-Security-Policy', $csp_policy);
         }
