@@ -3,7 +3,7 @@
         Options -MultiViews
     </IfModule>
 	  RewriteEngine On
-  RewriteRule ^(.*)$ public/$1 [L]
+		RewriteRule ^(.*)$ public/$1 [L]
 
     # Make sure .env files not not browseable if in a sub-directory.
     <FilesMatch "\.env$">
